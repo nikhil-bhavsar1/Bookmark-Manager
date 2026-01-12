@@ -74,10 +74,10 @@ export const parseMarkdown = (content: string): BookmarkItem[] => {
         // Detect list items: - [Title](URL) or * [Title](URL)
         const listMatch = line.match(/^[\s]*[-*]\s+(.+)$/);
         if (listMatch) {
-            const content = listMatch[1];
+            const content = listMatch[1] || '';
             const linkParts = content.match(/\[([^\]]+)\]\(([^)]+)\)/);
 
-            if (linkParts) {
+            if (linkParts && linkParts[1] && linkParts[2]) {
                 const title = linkParts[1].trim();
                 const url = linkParts[2].trim();
 
@@ -99,7 +99,7 @@ export const parseMarkdown = (content: string): BookmarkItem[] => {
             } else {
                 // Plain text list item - could be a simple URL
                 const urlMatch = content.match(/(https?:\/\/[^\s]+)/);
-                if (urlMatch) {
+                if (urlMatch && urlMatch[1]) {
                     const url = urlMatch[1];
                     const title = content.replace(url, '').trim() || url;
 
