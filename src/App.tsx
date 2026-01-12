@@ -83,7 +83,8 @@ function App() {
                 setData(transform(parsed));
             } else {
                 // Fallback to initial data if exists
-                const parsed = transform(bookmarksRaw);
+                const initialData = Array.isArray(bookmarksRaw) ? bookmarksRaw : [];
+                const parsed = transform(initialData);
                 setData(parsed);
                 if (parsed.length > 0) {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
