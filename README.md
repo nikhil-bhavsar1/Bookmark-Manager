@@ -89,6 +89,17 @@ To test the production build locally:
 npm run preview
 ```
 
+## Deployment
+
+### Vercel
+This project is ready for deployment on [Vercel](https://vercel.com).
+1. Import the project into Vercel.
+2. Vercel will automatically detect the Vite framework.
+3. The build command `npm run build` and output directory `dist` will be pre-configured.
+4. Deploy!
+
+*Note: The `setup_app.sh` script is for local development convenience and is not required for deployment.*
+
 ## Usage
 
 ### Creating Bookmarks
